@@ -8,7 +8,7 @@ con al menos un control interactivo.
 
 Correr con:  streamlit run streamlit_starter.py
 """
-
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import streamlit as st
