@@ -26,7 +26,10 @@ FEATURES = ["recency_days", "frequency", "monetary", "email_open_rate", "tenure_
 
 @st.cache_data
 def load_data():
-    return pd.read_csv("data/uplift_campaign.csv")
+    data_path = Path(__file__).resolve().parent / "data" / "uplift_campaign.csv"
+    if not data_path.is_file():
+        raise FileNotFoundError(f"No se encontró el archivo de datos: {data_path}")
+    return pd.read_csv(data_path)
 
 
 @st.cache_data
@@ -74,3 +77,4 @@ train, test = entrenar_t_learner(df, test_size=0.30, seed=42)
 
 
 st.info("Reemplacen cada TODO con su propio código. Revisen el notebook del laboratorio para la lógica exacta de cada pieza.")
+
